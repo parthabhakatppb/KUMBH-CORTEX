@@ -144,7 +144,7 @@ export default function MetricsPanel({ telemetryData, history }: MetricsPanelPro
   const PIE_COLORS = ["#f43f5e", "#f59e0b", "#10b981", "#38bdf8"];
 
   return (
-    <div className="w-full h-full grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div className="w-full lg:h-full grid grid-cols-1 md:grid-cols-4 gap-4">
       {/* ===== LEFT: Time-Series Density Chart ===== */}
       <div className="flex flex-col h-[200px] lg:h-full">
         <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 mb-1.5 flex items-center gap-2 font-mono">
