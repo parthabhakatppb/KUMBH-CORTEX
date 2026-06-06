@@ -347,7 +347,7 @@ export default function Dashboard() {
       )}
 
       {/* ===== MAIN CONTENT GRID ===== */}
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 min-w-[1024px]">
+      <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 p-4">
         {/* Left Column: Map + Metrics */}
         <div className="lg:col-span-8 flex flex-col gap-4">
           {/* Tactical Map */}
@@ -362,13 +362,13 @@ export default function Dashboard() {
           </div>
 
           {/* Metrics Panel */}
-          <div className="rounded-xl border border-slate-800/80 bg-slate-900/30 p-3 h-[280px]">
+          <div className="rounded-xl border border-slate-800/80 bg-slate-900/30 p-3 h-auto lg:h-[280px]">
             <MetricsPanel telemetryData={telemetry} history={history} />
           </div>
         </div>
 
         {/* Right Column: Cortex AI Feed */}
-        <div className="lg:col-span-4 rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 relative overflow-hidden flex flex-col h-[846px] sticky top-20">
+        <div className="lg:col-span-4 rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 relative overflow-hidden flex flex-col h-[500px] lg:h-[846px] lg:sticky lg:top-20">
           <CortexFeed
             strategies={strategies}
             onExecute={handleExecuteStrategy}

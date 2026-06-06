@@ -146,7 +146,7 @@ export default function MetricsPanel({ telemetryData, history }: MetricsPanelPro
   return (
     <div className="w-full h-full grid grid-cols-1 md:grid-cols-4 gap-4">
       {/* ===== LEFT: Time-Series Density Chart ===== */}
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-[200px] lg:h-full">
         <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 mb-1.5 flex items-center gap-2 font-mono">
           <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />
           SECTOR DENSITY
@@ -244,7 +244,7 @@ export default function MetricsPanel({ telemetryData, history }: MetricsPanelPro
       </div>
 
       {/* ===== MIDDLE: Sector Distribution ===== */}
-      <div className="flex flex-col h-full border-l border-slate-800/50 pl-4">
+      <div className="flex flex-col h-[200px] lg:h-full border-t lg:border-t-0 lg:border-l border-slate-800/50 pt-4 lg:pt-0 lg:pl-4">
         <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 mb-1.5 flex items-center gap-2 font-mono">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
           VOLUMETRIC SPREAD
@@ -277,7 +277,7 @@ export default function MetricsPanel({ telemetryData, history }: MetricsPanelPro
       </div>
 
       {/* ===== RIGHT: Hub Load Distribution ===== */}
-      <div className="flex flex-col h-full border-l border-slate-800/50 pl-4">
+      <div className="flex flex-col h-[200px] lg:h-full border-t lg:border-t-0 lg:border-l border-slate-800/50 pt-4 lg:pt-0 lg:pl-4">
         <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 mb-1.5 flex items-center gap-2 font-mono">
           <span className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" />
           HUB LOAD
@@ -319,7 +319,7 @@ export default function MetricsPanel({ telemetryData, history }: MetricsPanelPro
       </div>
 
       {/* ===== FAR RIGHT: Surge Velocity ===== */}
-      <div className="flex flex-col h-full border-l border-slate-800/50 pl-4">
+      <div className="flex flex-col h-[200px] lg:h-full border-t lg:border-t-0 lg:border-l border-slate-800/50 pt-4 lg:pt-0 lg:pl-4">
         <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 mb-1.5 flex items-center gap-2 font-mono">
           <span className="h-1.5 w-1.5 rounded-full bg-purple-500 animate-ping" />
           SURGE VELOCITY
