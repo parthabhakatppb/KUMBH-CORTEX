@@ -70,49 +70,53 @@ export default function MapView({ telemetryData, onManualOverride }: MapViewProp
   return (
     <div className="w-full h-full relative flex flex-col bg-slate-950">
       {/* ===== HUD Controls ===== */}
-      <div className="absolute top-3 left-3 z-10 flex gap-2">
-        <button
-          onClick={() => setViewMode("micro")}
-          className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold tracking-[0.15em] transition-all border flex items-center gap-1.5 ${
-            viewMode === "micro"
-              ? "bg-emerald-500/90 text-slate-950 border-emerald-400 shadow-lg shadow-emerald-500/25"
-              : "bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200 hover:border-slate-700"
-          }`}
-        >
-          <Crosshair className="h-3 w-3" />
-          MICRO: UJJAIN GHATS
-        </button>
-        <button
-          onClick={() => setViewMode("macro")}
-          className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold tracking-[0.15em] transition-all border flex items-center gap-1.5 ${
-            viewMode === "macro"
-              ? "bg-sky-500/90 text-slate-950 border-sky-400 shadow-lg shadow-sky-500/25"
-              : "bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200 hover:border-slate-700"
-          }`}
-        >
-          <Hexagon className="h-3 w-3" />
-          MACRO: TRANSIT GRID
-        </button>
-      </div>
-
-      {/* Mode Label and Override */}
-      <div className="absolute top-3 right-3 z-10 flex gap-2">
-        {onManualOverride && (
+      <div className="absolute top-3 left-3 right-3 z-10 flex flex-wrap justify-between gap-2 pointer-events-none">
+        
+        {/* Left Side: Scale Toggles */}
+        <div className="flex gap-2 pointer-events-auto">
           <button
-            onClick={onManualOverride}
-            className="bg-rose-500/10 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold flex items-center gap-2 backdrop-blur-sm transition-all"
-            title="Force System Flush to Baseline"
+            onClick={() => setViewMode("micro")}
+            className={`px-2 md:px-3 py-1.5 rounded-lg text-[9px] md:text-[10px] font-mono font-bold tracking-[0.1em] md:tracking-[0.15em] transition-all border flex items-center gap-1.5 ${
+              viewMode === "micro"
+                ? "bg-emerald-500/90 text-slate-950 border-emerald-400 shadow-lg shadow-emerald-500/25"
+                : "bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200 hover:border-slate-700"
+            }`}
           >
-            <Radio className="h-3.5 w-3.5" />
-            ANTI-STAMPEDE LOCKDOWN
+            <Crosshair className="h-3 w-3" />
+            <span className="hidden sm:inline">MICRO: </span>GHATS
           </button>
-        )}
-        <div className="bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-lg text-[10px] font-mono text-slate-500 flex items-center gap-2 backdrop-blur-sm">
-          <Layers className="h-3.5 w-3.5" />
-          <span>
-            {viewMode === "micro" ? "UJJAIN COMMAND ZONE" : "REGIONAL TRANSIT GRID"}
-          </span>
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <button
+            onClick={() => setViewMode("macro")}
+            className={`px-2 md:px-3 py-1.5 rounded-lg text-[9px] md:text-[10px] font-mono font-bold tracking-[0.1em] md:tracking-[0.15em] transition-all border flex items-center gap-1.5 ${
+              viewMode === "macro"
+                ? "bg-sky-500/90 text-slate-950 border-sky-400 shadow-lg shadow-sky-500/25"
+                : "bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200 hover:border-slate-700"
+            }`}
+          >
+            <Hexagon className="h-3 w-3" />
+            <span className="hidden sm:inline">MACRO: </span>TRANSIT
+          </button>
+        </div>
+
+        {/* Right Side: Mode Label and Override */}
+        <div className="flex gap-2 pointer-events-auto justify-end">
+          {onManualOverride && (
+            <button
+              onClick={onManualOverride}
+              className="bg-rose-500/10 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 px-2 md:px-3 py-1.5 rounded-lg text-[9px] md:text-[10px] font-mono font-bold flex items-center gap-1.5 backdrop-blur-sm transition-all"
+              title="Force System Flush to Baseline"
+            >
+              <Radio className="h-3.5 w-3.5" />
+              LOCKDOWN
+            </button>
+          )}
+          <div className="hidden md:flex bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-lg text-[10px] font-mono text-slate-500 items-center gap-2 backdrop-blur-sm">
+            <Layers className="h-3.5 w-3.5" />
+            <span>
+              {viewMode === "micro" ? "UJJAIN COMMAND ZONE" : "REGIONAL TRANSIT GRID"}
+            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
         </div>
       </div>
 

@@ -249,39 +249,39 @@ export default function Dashboard() {
             <ShieldAlert className="text-emerald-500 h-5 w-5" />
             <div className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           </div>
-          <h1 className="text-sm font-bold tracking-[0.2em] font-mono">
+          <h1 className="text-xs md:text-sm font-bold tracking-[0.1em] md:tracking-[0.2em] font-mono">
             KUMBH-CORTEX
           </h1>
         </div>
 
         <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
           {/* Connection Status */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900/80 border border-slate-800">
+          <div className="flex items-center gap-1.5 px-2 md:px-2.5 py-1 rounded-md bg-slate-900/80 border border-slate-800">
             <Wifi className={`h-3 w-3 ${connectionStatus === "connected" ? "text-emerald-400" : "text-rose-400 animate-pulse"}`} />
             <span className={connectionStatus === "connected" ? "text-emerald-400" : "text-rose-400"}>
-              {connectionStatus === "connected" ? "LINKED" : "SEVERED"}
+              <span className="hidden sm:inline">{connectionStatus === "connected" ? "LINKED" : "SEVERED"}</span>
             </span>
           </div>
           {/* Frequency */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900/80 border border-slate-800">
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900/80 border border-slate-800">
             <Activity className="h-3 w-3 text-emerald-400 animate-pulse" />
             <span>2.5 HZ</span>
           </div>
           {/* Help Button */}
           <button
             onClick={() => setIsBroadcastOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 transition-all font-bold tracking-wider"
+            className="flex items-center gap-1.5 px-2 md:px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 transition-all font-bold tracking-wider"
             title="Field Broadcast"
           >
-            <span className="text-[11px] font-mono">📡 BROADCAST</span>
+            <span className="text-[11px] font-mono">📡 <span className="hidden sm:inline">BROADCAST</span></span>
           </button>
           <button
             onClick={() => setIsHelpOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all font-bold tracking-wider shadow-[0_0_10px_rgba(16,185,129,0.2)]"
+            className="flex items-center gap-1.5 px-2 md:px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all font-bold tracking-wider shadow-[0_0_10px_rgba(16,185,129,0.2)]"
             title="Command Guide"
           >
             <HelpCircle className="h-3.5 w-3.5" />
-            COMMAND GUIDE
+            <span className="hidden sm:inline">COMMAND GUIDE</span>
           </button>
         </div>
       </header>
