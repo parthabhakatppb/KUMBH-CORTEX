@@ -42,6 +42,77 @@ interface HistoryTick {
   hubs: Record<string, { occupancy: number; status: string }>;
 }
 
+const LoadingScreen = () => {
+  const [progress, setProgress] = useState(0);
+  const [message, setMessage] = useState("Initializing neural command fabric...");
+
+  useEffect(() => {
+    const messages = [
+      "Initializing neural command fabric...",
+      "Establishing secure uplink to satellite grid...",
+      "Waking up backend from cold-sleep...",
+      "Synchronizing sector telemetry...",
+      "Booting AI response modules...",
+      "Connecting to Ujjain mainframe..."
+    ];
+    let msgIndex = 0;
+    
+    // Cycle messages every 5 seconds
+    const msgInterval = setInterval(() => {
+      msgIndex = (msgIndex + 1) % messages.length;
+      setMessage(messages[msgIndex]);
+    }, 5000);
+
+    // Slowly increment progress bar up to 99%
+    const progInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 99) return 99;
+        // Slow down as it gets closer to 99
+        const increment = prev < 40 ? 3 : prev < 75 ? 1.5 : 0.4;
+        return Math.min(99, prev + increment);
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(msgInterval);
+      clearInterval(progInterval);
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6">
+      <div className="flex flex-col items-center gap-6 w-full max-w-xs">
+        <div className="relative">
+          <ShieldAlert className="h-12 w-12 text-emerald-500 animate-pulse" />
+          <div className="absolute inset-0 h-12 w-12 rounded-full bg-emerald-500/20 animate-ping" />
+        </div>
+        
+        <div className="text-center w-full">
+          <h1 className="text-xl font-bold text-slate-100 tracking-wider font-mono mb-2">
+            KUMBH-CORTEX
+          </h1>
+          <p className="text-[10px] text-emerald-400/80 mb-6 font-mono h-4 animate-pulse">
+            {message}
+          </p>
+          
+          {/* Progress Bar Container */}
+          <div className="w-full bg-slate-900/80 border border-slate-800 rounded-full h-1.5 mb-2 overflow-hidden relative">
+            <div 
+              className="bg-emerald-500 h-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(16,185,129,0.5)]" 
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          
+          <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+            <span>SYS_BOOT_SEQ</span>
+            <span className="text-emerald-500/70">{Math.floor(progress)}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Dashboard() {
   const [telemetry, setTelemetry] = useState<any>(null);
   const [strategies, setStrategies] = useState<any[]>([]);
@@ -166,33 +237,7 @@ export default function Dashboard() {
 
   // Loading skeleton
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-6">
-          <div className="relative">
-            <ShieldAlert className="h-12 w-12 text-emerald-500 animate-pulse" />
-            <div className="absolute inset-0 h-12 w-12 rounded-full bg-emerald-500/20 animate-ping" />
-          </div>
-          <div className="text-center">
-            <h1 className="text-xl font-bold text-slate-100 tracking-wider font-mono">
-              KUMBH-CORTEX
-            </h1>
-            <p className="text-sm text-slate-500 mt-1 font-mono">
-              Initializing neural command fabric...
-            </p>
-          </div>
-          <div className="flex gap-1">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="w-2 h-2 rounded-full bg-emerald-500/60 animate-bounce"
-                style={{ animationDelay: `${i * 0.15}s` }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   return (
