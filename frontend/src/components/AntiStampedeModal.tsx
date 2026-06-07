@@ -196,7 +196,7 @@ export default function AntiStampedeModal({
 
   return (
     /* Full-screen overlay */
-    <div className="fixed inset-0 z-[70] flex items-start sm:items-center justify-center overflow-y-auto p-3 sm:p-6">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto p-3 sm:p-6">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-slate-950/85 backdrop-blur-sm"

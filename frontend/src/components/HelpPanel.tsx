@@ -32,8 +32,12 @@ export default function HelpPanel({ isOpen, onClose }: HelpPanelProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="bg-slate-950 border border-slate-800 rounded-2xl w-[90vw] max-w-[820px] max-h-[85vh] flex flex-col shadow-2xl shadow-black/50 overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden">
+      {/* Backdrop */}
+      <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={onClose} />
+      
+      {/* Modal Content */}
+      <div className="relative z-10 w-full max-w-[820px] bg-slate-950 border border-slate-800 rounded-2xl flex flex-col shadow-2xl shadow-black/50 max-h-[calc(100vh-1.5rem)] sm:max-h-[85vh] overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 shrink-0">
           <div className="flex items-center gap-3">
@@ -58,7 +62,7 @@ export default function HelpPanel({ isOpen, onClose }: HelpPanelProps) {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-slate-800 px-6 shrink-0">
+        <div className="flex border-b border-slate-800 px-2 sm:px-6 shrink-0 overflow-x-auto whitespace-nowrap scrollbar-hide">
           {[
             { id: "overview" as const, label: "OVERVIEW", icon: Shield },
             { id: "workflow" as const, label: "HOW IT WORKS", icon: Activity },
@@ -81,7 +85,7 @@ export default function HelpPanel({ isOpen, onClose }: HelpPanelProps) {
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-6 py-5 space-y-5">
           {activeTab === "overview" && (
             <>
               {/* Mission Statement */}
