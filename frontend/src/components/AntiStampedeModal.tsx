@@ -207,7 +207,7 @@ export default function AntiStampedeModal({
       )}
 
       {/* Modal card — responsive max-width, scrollable */}
-      <div className="relative z-10 w-full max-w-lg rounded-2xl border border-rose-500/40 bg-slate-900 shadow-2xl shadow-rose-900/40 flex flex-col my-4 sm:my-0 max-h-[calc(100vh-2rem)] sm:max-h-[90vh] overflow-hidden">
+      <div className="relative z-10 w-full max-w-lg rounded-2xl border border-rose-500/40 bg-slate-900 shadow-2xl shadow-rose-900/40 flex flex-col my-4 sm:my-0 max-h-[85dvh] sm:max-h-[85vh] overflow-hidden">
 
         {/* ── Header ── */}
         <div

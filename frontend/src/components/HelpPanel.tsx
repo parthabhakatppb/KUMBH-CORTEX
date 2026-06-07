@@ -37,7 +37,7 @@ export default function HelpPanel({ isOpen, onClose }: HelpPanelProps) {
       <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={onClose} />
       
       {/* Modal Content */}
-      <div className="relative z-10 w-full max-w-[820px] bg-slate-950 border border-slate-800 rounded-2xl flex flex-col shadow-2xl shadow-black/50 max-h-[calc(100vh-1.5rem)] sm:max-h-[85vh] overflow-hidden">
+      <div className="relative z-10 w-full max-w-[820px] bg-slate-950 border border-slate-800 rounded-2xl flex flex-col shadow-2xl shadow-black/50 max-h-[85dvh] sm:max-h-[85vh] overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 shrink-0">
           <div className="flex items-center gap-3">
