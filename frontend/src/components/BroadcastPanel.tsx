@@ -214,10 +214,10 @@ export default function BroadcastPanel({
         </div>
 
         {/* ── Body: responsive flex col on mobile, row on sm+ ── */}
-        <div className="flex flex-col sm:flex-row flex-1 min-h-0 overflow-hidden">
+        <div className="flex flex-col sm:flex-row flex-1 min-h-0 overflow-y-auto sm:overflow-hidden">
 
           {/* LEFT: Compose */}
-          <div className="flex-1 p-4 sm:p-5 flex flex-col gap-3 overflow-y-auto sm:border-r border-slate-800">
+          <div className="flex-1 p-4 sm:p-5 flex flex-col gap-3 sm:overflow-y-auto sm:border-r border-slate-800">
             {/* Tabs */}
             <div className="flex gap-1 bg-slate-950/50 p-1 rounded-lg flex-shrink-0">
               {(["compose", "emergency", "resource"] as const).map((t) => (
@@ -290,7 +290,7 @@ export default function BroadcastPanel({
                 </div>
 
                 {/* Message */}
-                <div className="flex-1 flex flex-col min-h-0">
+                <div className="flex flex-col sm:flex-1 sm:min-h-0">
                   <label className="text-[10px] font-mono text-slate-500 font-bold tracking-wider mb-1.5 block flex-shrink-0">
                     MESSAGE
                   </label>
@@ -367,7 +367,7 @@ export default function BroadcastPanel({
           </div>
 
           {/* RIGHT: Server Broadcast Log */}
-          <div className="sm:w-60 border-t sm:border-t-0 sm:border-l border-slate-800 p-4 flex flex-col gap-2 overflow-hidden">
+          <div className="sm:w-60 border-t sm:border-t-0 sm:border-l border-slate-800 p-4 flex flex-col gap-2 sm:overflow-hidden">
             <div className="flex items-center justify-between flex-shrink-0">
               <h3 className="text-[10px] font-mono font-bold text-slate-500 tracking-wider">
                 BROADCAST LOG
