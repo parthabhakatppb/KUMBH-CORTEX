@@ -243,7 +243,8 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col antialiased">
       {/* ===== TOP HEADER BAR ===== */}
-      <header className="h-14 border-b border-slate-800/80 flex items-center justify-between px-5 bg-slate-900/40 backdrop-blur-xl sticky top-0 z-50">
+      <header className="h-14 border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-xl sticky top-0 z-50 flex justify-center">
+        <div className="max-w-7xl w-full flex items-center justify-between px-3 md:px-5">
         <div className="flex items-center gap-3">
           <div className="relative">
             <ShieldAlert className="text-emerald-500 h-5 w-5" />
@@ -284,11 +285,13 @@ export default function Dashboard() {
             <span className="hidden sm:inline">COMMAND GUIDE</span>
           </button>
         </div>
+        </div>
       </header>
 
       {/* ===== STATUS STRIP ===== */}
       {systemStatus && (
-        <div className="h-9 border-b border-slate-800/50 flex items-center px-5 gap-6 bg-slate-950/90 text-[11px] font-mono overflow-x-auto">
+        <div className="bg-slate-950/90 border-b border-slate-800/50 flex justify-center">
+          <div className="max-w-7xl w-full h-9 flex items-center px-3 md:px-5 gap-6 text-[11px] font-mono overflow-x-auto">
           {/* Threat Level */}
           <div className={`flex items-center gap-2 px-2.5 py-0.5 rounded border ${getThreatColor(systemStatus.threat_level)}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${getThreatDotColor(systemStatus.threat_level)} ${systemStatus.threat_level === "CRITICAL" ? "animate-ping" : "animate-pulse"}`} />
@@ -343,11 +346,12 @@ export default function Dashboard() {
             <span className="text-slate-500">{systemStatus.uptime}</span>
             <span className="text-slate-700">UPTIME</span>
           </div>
+          </div>
         </div>
       )}
 
       {/* ===== MAIN CONTENT GRID ===== */}
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 p-4">
+      <main className="flex-1 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 p-3 md:p-4">
         {/* Left Column: Map + Metrics */}
         <div className="lg:col-span-8 flex flex-col gap-4">
           {/* Tactical Map */}
