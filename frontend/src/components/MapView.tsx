@@ -107,7 +107,7 @@ export default function MapView({ telemetryData, onManualOverride }: MapViewProp
               title="Force System Flush to Baseline"
             >
               <Radio className="h-3.5 w-3.5" />
-              LOCKDOWN
+              ANTI-STAMPEDE LOCKDOWN
             </button>
           )}
           <div className="hidden md:flex bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-lg text-[10px] font-mono text-slate-500 items-center gap-2 backdrop-blur-sm">
